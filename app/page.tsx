@@ -57,7 +57,7 @@ export default function Portfolio() {
               <div className="space-y-4">
                 <h2 className="text-2xl font-mono font-semibold text-primary">./initialize_connection</h2>
                 <p className="text-muted-foreground leading-relaxed">
-                  Welcome to my digital fortress. I earned my degree in Computer Science and Cybersecurity from the University of Central Arkansas in May of 2025, graduating with a 3.406 GPA. My expertise spans from AI, machine learning, and blockchain research to full‑stack development and cybersecurity competitions. I've co‑authored research on blockchain‑based vehicle forensics and competed in multiple CTF competitions including JOLT and NCL.
+                  Welcome to my digital fortress. I earned my degree in Computer Science and Cybersecurity from the University of Central Arkansas in May of 2025, graduating with a 3.406 GPA. My expertise spans from AI, machine learning, and blockchain research to full‑stack development and cybersecurity competitions. I've co‑authored and presented research on blockchain‑based vehicle forensics and competed in multiple CTF competitions including JOLT and NCL.
                 </p>
                 <div className="flex space-x-4">
                   <Button
