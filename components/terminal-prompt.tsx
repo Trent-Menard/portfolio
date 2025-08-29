@@ -39,7 +39,7 @@ export function TerminalPrompt({ commands, onComplete }: TerminalPromptProps) {
   }, [currentCommandIndex, commands, onComplete])
 
   return (
-    <div className="font-mono text-sm space-y-2">
+    <div className="font-mono text-xs sm:text-sm space-y-1 sm:space-y-2">
       {commands.slice(0, currentCommandIndex).map((cmd, index) => (
         <div key={index} className="flex items-center space-x-2">
           <span className="text-primary">$</span>

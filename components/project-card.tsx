@@ -85,11 +85,11 @@ export function ProjectCard({ project }: { project: Project }) {
   const Icon = typeIcons[project.type]
 
   return (
-    <Card className="group p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
-      <div className="flex items-start justify-between mb-4">
+    <Card className="group p-4 sm:p-6 bg-card/50 backdrop-blur-sm border-border/50 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/10">
+      <div className="flex items-start justify-between mb-3 sm:mb-4">
         <div className="flex items-center space-x-2">
-          <Icon className="w-5 h-5 text-primary" />
-          <h3 className="text-lg font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
+          <Icon className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+          <h3 className="text-base sm:text-lg font-mono font-semibold text-foreground group-hover:text-primary transition-colors">
             {project.title}
           </h3>
         </div>
@@ -98,9 +98,9 @@ export function ProjectCard({ project }: { project: Project }) {
         </Badge>
       </div>
 
-      <p className="text-muted-foreground text-sm mb-4 leading-relaxed">{project.description}</p>
+      <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 leading-relaxed">{project.description}</p>
 
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
         {project.tech.map((tech) => (
           <Badge key={tech} variant="outline" className="font-mono text-xs">
             {tech}
@@ -108,29 +108,29 @@ export function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
 
-      <div className="flex space-x-2">
+      <div className="flex flex-col sm:flex-row gap-2 sm:space-x-2">
         {project.github && project.github !== "#" && (
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="text-xs">
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-primary/25 transition-all duration-200"
             >
-              <Github className="w-4 h-4 mr-1" />
+              <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
               ./source
             </a>
           </Button>
         )}
         {project.demo && (
-          <Button asChild size="sm" variant="default">
+          <Button asChild size="sm" variant="default" className="text-xs">
             <a
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white hover:scale-105 hover:shadow-lg hover:shadow-primary/25 transition-all duration-200"
             >
-              <ExternalLink className="w-4 h-4 mr-1" />
+              <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
               {project.title === "Python Backdoor & Presentation" ? "YouTube" : 
                project.title === "Blockchain Vehicle Forensics" ? "IEEE" : "./demo"}
             </a>
@@ -143,7 +143,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
 export function ProjectsGrid() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {projects.map((project) => (
         <ProjectCard key={project.title} project={project} />
       ))}
