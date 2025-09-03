@@ -31,7 +31,7 @@ const projects: Project[] = [
   },
   {
     title: "Netflix Backend System",
-    description: "Built full-stack streaming platform using Java Servlets, SQL database, and JDBC. Features include searching, content filtering, and secure user authentication.",
+    description: "Built full-stack web app using Java Servlets, SQL database, and JDBC. Features include searching, content filtering, recommendations, and secure user authentication.",
     tech: ["Java", "SQL", "Apache Tomcat", "JDBC", "HTML/CSS"],
     github: "https://github.com/Trent-Menard/NetflixBackendWebDev",
     type: "web",
