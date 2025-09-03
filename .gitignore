@@ -141,3 +141,7 @@ coverage/
 # Misc
 *.tgz
 *.tar.gz
+
+ProjectDescriptions.md
+Resume.md
+portfolio-planning.md

@@ -1,7 +1,6 @@
 "use client"
 
 import { Card } from "@/components/ui/card"
-import { sk } from "date-fns/locale"
 
 interface Skill {
   name: string
