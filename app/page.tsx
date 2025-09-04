@@ -14,6 +14,14 @@ import { Terminal, Shield, Code, Mail, Download, ExternalLink } from "lucide-rea
 export default function Portfolio() {
   const [showContent, setShowContent] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [expandedSkillCategories, setExpandedSkillCategories] = useState<string[]>([
+    "Programming",
+    "Frontend", 
+    "Backend",
+    "Database", 
+    "Cybersecurity_Research", 
+    "Systems_Technologies"
+  ])
 
   const bootCommands = [
     "sudo systemctl start portfolio.service",
@@ -170,7 +178,16 @@ export default function Portfolio() {
         return (
           <div className="space-y-6 sm:space-y-8">
             <h1 className="text-2xl sm:text-3xl font-mono font-bold text-primary">./skills --list</h1>
-            <SkillTerminal />
+            <SkillTerminal 
+              expandedCategories={expandedSkillCategories}
+              onToggleCategory={(category: string) => {
+                setExpandedSkillCategories(prev => 
+                  prev.includes(category) 
+                    ? prev.filter(c => c !== category)
+                    : [...prev, category]
+                )
+              }}
+            />
           </div>
         )
 
