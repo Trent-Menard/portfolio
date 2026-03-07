@@ -43,17 +43,33 @@ export function TerminalNav({ activeSection, setActiveSection }: TerminalNavProp
         <div className="flex items-center justify-between">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 font-mono text-sm">
-            <span className="text-primary">root@trent</span>
-            <span className="text-muted-foreground">:</span>
-            <span className="text-accent">~/{activeSection}</span>
+            <button
+              type="button"
+              onClick={() => setActiveSection("home")}
+              className="text-primary hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-0.5 -mx-0.5 transition-colors inline-flex items-center space-x-1"
+              aria-label="Go to Home"
+            >
+              <span>root@trent</span>
+              <span className="text-muted-foreground">:</span>
+              <span className="text-accent">~</span>
+            </button>
+            <span className="text-accent">/{activeSection}</span>
             <span className="text-primary terminal-cursor"></span>
           </div>
 
           {/* Mobile Navigation Title */}
           <div className="md:hidden flex items-center space-x-1 font-mono text-sm">
-            <span className="text-primary">root@trent</span>
-            <span className="text-muted-foreground">:</span>
-            <span className="text-accent">~/{activeSection}</span>
+            <button
+              type="button"
+              onClick={() => setActiveSection("home")}
+              className="text-primary hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-0.5 -mx-0.5 transition-colors inline-flex items-center space-x-1"
+              aria-label="Go to Home"
+            >
+              <span>root@trent</span>
+              <span className="text-muted-foreground">:</span>
+              <span className="text-accent">~</span>
+            </button>
+            <span className="text-accent">/{activeSection}</span>
             <span className="text-primary terminal-cursor"></span>
           </div>
 
