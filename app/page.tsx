@@ -241,15 +241,19 @@ export default function Portfolio() {
                 <h2 className="text-lg sm:text-xl font-mono font-semibold mb-4 text-foreground">Get In Touch</h2>
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
-                    <ExternalLink className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-                    <a href="https://github.com/Trent-Menard" target="_blank" rel="noopener noreferrer" className="font-mono text-xs sm:text-sm text-primary hover:underline">
-                      View GitHub Profile
+                    <a href="https://github.com/Trent-Menard" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      <img src="logos/github.svg" alt="GitHub" className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                      <span className="font-mono text-xs sm:text-sm text-primary hover:underline ml-2">
+                        View GitHub Profile
+                      </span>
                     </a>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
-                    <a href="https://linkedin.com/in/trent-menard" target="_blank" rel="noopener noreferrer" className="font-mono text-xs sm:text-sm text-primary hover:underline">
-                      Connect on LinkedIn
+                    <a href="https://linkedin.com/in/trent-menard" target="_blank" rel="noopener noreferrer" className="flex items-center">
+                      <img src="logos/linkedin.svg" alt="GitHub" className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                      <span className="font-mono text-xs sm:text-sm text-primary hover:underline ml-2">
+                        Connect on LinkedIn
+                      </span>
                     </a>
                   </div>
                 </div>
