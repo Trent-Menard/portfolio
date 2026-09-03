@@ -1,37 +1,41 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Moon, Sun, Terminal, Shield, Code, User, Briefcase, Mail, Menu, X } from "lucide-react"
 import { useTheme } from "next-themes"
 
 const navItems = [
-  { path: "home", label: "Home", icon: Terminal },
-  { path: "about", label: "About", icon: User },
-  { path: "projects", label: "Projects", icon: Code },
-  { path: "skills", label: "Skills", icon: Shield },
-  { path: "experience", label: "Experience", icon: Briefcase },
-  { path: "contact", label: "Contact", icon: Mail },
+  { path: "home", href: "/", label: "Home", icon: Terminal },
+  { path: "about", href: "/about", label: "About", icon: User },
+  { path: "projects", href: "/projects", label: "Projects", icon: Code },
+  { path: "skills", href: "/skills", label: "Skills", icon: Shield },
+  { path: "experience", href: "/experience", label: "Experience", icon: Briefcase },
+  { path: "contact", href: "/contact", label: "Contact", icon: Mail },
 ]
 
-interface TerminalNavProps {
-  activeSection: string
-  setActiveSection: (section: string) => void
+function sectionFromPathname(pathname: string): string {
+  if (pathname === "/") return "home"
+  const segment = pathname.split("/").filter(Boolean)[0]
+  return segment || "home"
 }
 
-export function TerminalNav({ activeSection, setActiveSection }: TerminalNavProps) {
+export function TerminalNav() {
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const pathname = usePathname()
+  const activeSection = sectionFromPathname(pathname)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const handleNavClick = (section: string) => {
-    setActiveSection(section)
+  useEffect(() => {
     setMobileMenuOpen(false)
-  }
+  }, [pathname])
 
   if (!mounted) {
     return null
@@ -43,32 +47,30 @@ export function TerminalNav({ activeSection, setActiveSection }: TerminalNavProp
         <div className="flex items-center justify-between">
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1 font-mono text-sm">
-            <button
-              type="button"
-              onClick={() => setActiveSection("home")}
+            <Link
+              href="/"
               className="text-primary hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-0.5 -mx-0.5 transition-colors inline-flex items-center space-x-1"
               aria-label="Go to Home"
             >
               <span>root@trent</span>
               <span className="text-muted-foreground">:</span>
               <span className="text-accent">~</span>
-            </button>
+            </Link>
             <span className="text-accent">/{activeSection}</span>
             <span className="text-primary terminal-cursor"></span>
           </div>
 
           {/* Mobile Navigation Title */}
           <div className="md:hidden flex items-center space-x-1 font-mono text-sm">
-            <button
-              type="button"
-              onClick={() => setActiveSection("home")}
+            <Link
+              href="/"
               className="text-primary hover:text-accent hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-0.5 -mx-0.5 transition-colors inline-flex items-center space-x-1"
               aria-label="Go to Home"
             >
               <span>root@trent</span>
               <span className="text-muted-foreground">:</span>
               <span className="text-accent">~</span>
-            </button>
+            </Link>
             <span className="text-accent">/{activeSection}</span>
             <span className="text-primary terminal-cursor"></span>
           </div>
@@ -77,19 +79,22 @@ export function TerminalNav({ activeSection, setActiveSection }: TerminalNavProp
           <div className="hidden md:flex items-center space-x-2">
             {navItems.map((item) => {
               const Icon = item.icon
+              const isActive = activeSection === item.path
               return (
                 <Button
                   key={item.path}
-                  variant={activeSection === item.path ? "default" : "ghost"}
+                  asChild
+                  variant={isActive ? "default" : "ghost"}
                   size="sm"
-                  onClick={() => setActiveSection(item.path)}
                   className={`font-mono text-xs transition-all duration-200 hover:scale-105 active:scale-95 ${
-                    activeSection === item.path
+                    isActive
                       ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white shadow-lg shadow-primary/25"
                       : "hover:bg-primary/20 hover:text-primary-foreground"
                   }`}
                 >
-                  <Icon className="w-4 h-4 mr-1" />/{item.path}
+                  <Link href={item.href}>
+                    <Icon className="w-4 h-4 mr-1" />/{item.path}
+                  </Link>
                 </Button>
               )
             })}
@@ -132,19 +137,22 @@ export function TerminalNav({ activeSection, setActiveSection }: TerminalNavProp
             <div className="grid grid-cols-2 gap-2 pt-4">
               {navItems.map((item) => {
                 const Icon = item.icon
+                const isActive = activeSection === item.path
                 return (
                   <Button
                     key={item.path}
-                    variant={activeSection === item.path ? "default" : "ghost"}
+                    asChild
+                    variant={isActive ? "default" : "ghost"}
                     size="sm"
-                    onClick={() => handleNavClick(item.path)}
                     className={`font-mono text-xs transition-all duration-200 hover:scale-105 active:scale-95 justify-start ${
-                      activeSection === item.path
+                      isActive
                         ? "bg-primary text-primary-foreground hover:bg-primary/90 hover:text-white shadow-lg shadow-primary/25"
                         : "hover:bg-primary/20 hover:text-primary-foreground"
                     }`}
                   >
-                    <Icon className="w-4 h-4 mr-2" />/{item.path}
+                    <Link href={item.href} onClick={() => setMobileMenuOpen(false)}>
+                      <Icon className="w-4 h-4 mr-2" />/{item.path}
+                    </Link>
                   </Button>
                 )
               })}

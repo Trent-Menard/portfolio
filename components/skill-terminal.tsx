@@ -61,7 +61,7 @@ export function SkillTerminal({ expandedCategories, onToggleCategory }: SkillTer
       return logos.map((icon, i) => (
         <img 
           key={`${skill.name}-${i}`}
-          src={`logos/${icon}`}
+          src={`/logos/${icon}`}
           alt={`${skill.name} logo`}
           className="w-3 h-3 sm:w-4 sm:h-4"
         />

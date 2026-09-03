@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
 import { ThemeProvider } from "@/components/theme-provider"
+import { MatrixBackground } from "@/components/matrix-background"
+import { TerminalNav } from "@/components/terminal-nav"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
@@ -29,7 +31,13 @@ export default function RootLayout({
       <head />
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange={false}>
-          {children}
+          <div className="min-h-screen bg-background text-foreground">
+            <MatrixBackground />
+            <TerminalNav />
+            <main className="pt-20 pb-12">
+              <div className="max-w-6xl mx-auto px-4 sm:px-6">{children}</div>
+            </main>
+          </div>
         </ThemeProvider>
         <Analytics />
       </body>
